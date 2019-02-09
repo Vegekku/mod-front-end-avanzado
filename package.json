@@ -1,0 +1,28 @@
+{
+  "name": "mod-front-end-avanzado",
+  "version": "1.0.0",
+  "description": "Project for KeepCoding VI Bootcamp Web - Advanced Frontend Module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "webpack": "./node_modules/.bin/webpack",
+    "webpack-dev": "./node_modules/.bin/webpack -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vegekku/mod-front-end-avanzado.git"
+  },
+  "keywords": [
+    "webpack"
+  ],
+  "author": "Jesus Moyano Ruz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Vegekku/mod-front-end-avanzado/issues"
+  },
+  "homepage": "https://github.com/Vegekku/mod-front-end-avanzado#readme",
+  "devDependencies": {
+    "webpack": "^4.29.3",
+    "webpack-cli": "^3.2.3"
+  }
+}
