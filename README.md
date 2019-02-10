@@ -10,16 +10,15 @@ Project for KeepCoding VI Bootcamp Web - Advanced Frontend Module
 $ npm install
 ```
 
-### Run the app
+### Working in dev
 
-On production environment:
-```shell
-$ npm run prod
-```
-
-On develop environment:
 ```shell
 $ npm start
+```
+
+### Building the app
+```shell
+$ npm run build
 ```
 
 ## CHANGELOG
