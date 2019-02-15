@@ -2,23 +2,23 @@
 
 ## Historias de usuario
 
-1. Accesible desde cualquier dispositivo. Mobile first!
-2. Listar cervezas
-3. En home, filtrar por texto y limitar a 10 max. Añadir filtro por fecha.
-4. El buscador de texto debe estar en un header con imagen de fondo. (Imagen adaptada como en el curso!)
-5. Navegar al detalle de la cerveza, la cual tiene más info que la mostrada en listado.
-6. En detalle se debe cumplir ALMENOS uno de los siguientes puntos:
+1. &#9745; Accesible desde cualquier dispositivo. Mobile first!
+2. &#9744; Listar cervezas
+3. &#9744; En home, filtrar por texto y limitar a 10 max. Añadir filtro por fecha.
+4. &#9744; El buscador de texto debe estar en un header con imagen de fondo. (Imagen adaptada como en el curso!)
+5. &#9744; Navegar al detalle de la cerveza, la cual tiene más info que la mostrada en listado.
+6. &#9744; En detalle se debe cumplir ALMENOS uno de los siguientes puntos:
     * guardar un comentario
     * añadir likes
 
 ## Notas desarrollador
 
-1. Realizar sin framework y sin librerias. Está permitido Coffee script o typescript.
-2. Necesario usar Webpack para gestión de assets
-3. Buena documentación README.md
-4. Se requiere el uso de SASS, LESS o Stylus.
-5. Uso de API.
-6. Uso de localStorage para guardar filtros (OPCIONAL)
+1. &#9744; Realizar sin framework y sin librerias. Está permitido Coffee script o typescript.
+2. &#9744; Necesario usar Webpack para gestión de assets
+3. &#9744; Buena documentación README.md
+4. &#9744; Se requiere el uso de SASS, LESS o Stylus.
+5. &#9744; Uso de API.
+6. &#9744; Uso de localStorage para guardar filtros (OPCIONAL)
 
 ## Uso de API
 
