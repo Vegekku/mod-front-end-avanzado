@@ -4,6 +4,23 @@ const api = (API_URL = 'https://web-bootcamp-exercise-beer-api-nijliozdcg.now.sh
   const SHOWS_URL = `${API_URL}shows`;
 
   return {
+    createQuote: async (id, text) => {
+      try {
+        const response = await fetch(`${API_URL}/quote/${id}`, {
+          method: 'POST',
+          body: JSON.stringify({
+            quote: text,
+          }),
+          headers: {
+            'X-API-KEY': API_KEY,
+          },
+        });
+        const quote = await response.json();
+        return quote;
+      } catch (e) {
+        throw e;
+      }
+    },
     getShows: async (query) => {
       try {
         const requestUrl = query
@@ -38,6 +55,15 @@ const api = (API_URL = 'https://web-bootcamp-exercise-beer-api-nijliozdcg.now.sh
         });
         const data = await response.json();
         console.log(data);
+      } catch (e) {
+        throw e;
+      }
+    },
+    getShowDetail: async (id) => {
+      try {
+        const response = await fetch(`${SHOWS_URL}/${id}`);
+        const show = await response.json();
+        return show;
       } catch (e) {
         throw e;
       }

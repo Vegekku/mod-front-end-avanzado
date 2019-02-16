@@ -4,7 +4,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const srcDir = 'src';
 
 module.exports = {
-  entry: Path.join(__dirname, srcDir, 'index.js'),
+  entry: {
+    app: Path.join(__dirname, srcDir, 'index.js'),
+    detail: Path.join(__dirname, srcDir, 'detail.js'),
+  },
   output: {
     filename: '[name].bundle.js',
     path: Path.join(__dirname, 'dist'),
@@ -17,6 +20,7 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
+        // test: /\.(jpg|png|jpeg|gif)$/,
         test: /assets\/.*/,
         use: 'file-loader?name=[name].[ext]&useRelativePath=true',
       },
@@ -25,8 +29,14 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: Path.join(__dirname, srcDir, 'index.html'),
-      title: 'Production',
+      // title: 'Production',
       minify: true,
+      chunks: ['app'],
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'detail.html',
+      template: Path.join(__dirname, srcDir, 'detail.html'),
+      chunks: ['detail'],
     }),
   ],
 };

@@ -31,4 +31,4 @@ Basic practice version. Include:
 
 ## TODO
 
-* npm install --save-dev clean-webpack-plugin mini-css-extract-plugin postcss-loader autoprefixer
+* 
