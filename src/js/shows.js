@@ -51,15 +51,16 @@ const renderShows = (element, shows, start = 0, limit = 10) => {
   });
 };
 
-export const renderDOMShows = async (query) => {
+const renderDOMShows = async (search = false, date = false) => {
   try {
-    const fetchShows = await getBeers(query);
-    console.log(fetchShows);
+    const fetchShows = await getBeers(search, date);
     const showSection = document.getElementById('show-section');
     renderShows(showSection, fetchShows);
   } catch (e) {
     console.error(e);
   }
 };
+
+export default renderDOMShows;
 
 renderDOMShows();

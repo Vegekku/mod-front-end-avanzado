@@ -1,4 +1,6 @@
 const API_KEY = 'NR2YK0E-74EMHB0-G13B8JQ-AKVEAHC';
+const Moment = require('moment');
+
 const api = (API_URL = 'https://web-bootcamp-exercise-beer-api-nijliozdcg.now.sh/api/v1/') => {
   const GET_BEERS = `${API_URL}beers`;
   const SEARCH_BEERS = `${GET_BEERS}?search=`;
@@ -8,13 +10,26 @@ const api = (API_URL = 'https://web-bootcamp-exercise-beer-api-nijliozdcg.now.sh
   };
 
   return {
-    getBeers: async (query) => {
+    getBeers: async ({ search = false, date = false }) => {
       try {
-        const requestURL = query ? `${SEARCH_BEERS}${query}` : GET_BEERS;
+        const requestURL = search ? `${SEARCH_BEERS}${search}` : GET_BEERS;
         const response = await fetch(requestURL, { headers });
         const data = await response.json();
-        // TODO Use map or filter to use datetime search
-        return data.beers;
+
+        const beers = data.beers.filter((item) => {
+          if (date) {
+            const momentDate = Moment(date, 'YYYY-MM-DD');
+            const momentItem = Moment(item.firstBrewed, 'MM/YYYY');
+
+            if (momentDate.get('year') === momentItem.get('year') && momentDate.get('month') === momentItem.get('month')) {
+              return item;
+            }
+          } else {
+            return item;
+          }
+        });
+
+        return beers;
       } catch (e) {
         throw e;
       }

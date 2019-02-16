@@ -2,9 +2,9 @@
 
 ## Historias de usuario
 
-1. &#9745; Accesible desde cualquier dispositivo. Mobile first!
+1. &#9744; Accesible desde cualquier dispositivo. Mobile first!
 2. &#9745; Listar cervezas
-3. &#9744; En home, filtrar por texto y limitar a 10 max. Añadir filtro por fecha.
+3. &#9745; En home, filtrar por texto y limitar a 10 max. Añadir filtro por fecha.
 4. &#9744; El buscador de texto debe estar en un header con imagen de fondo. (Imagen adaptada como en el curso!)
 5. &#9745; Navegar al detalle de la cerveza, la cual tiene más info que la mostrada en listado.
 6. &#9744; En detalle se debe cumplir ALMENOS uno de los siguientes puntos:
