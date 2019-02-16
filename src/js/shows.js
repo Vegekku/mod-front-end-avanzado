@@ -1,32 +1,24 @@
 import striptags from 'striptags';
 import { openHeader } from './ui';
-import api from './api'; // esto es posible gracias a 'export default'
+import api from './api';
 
-// de esta forma, no habría que modificar todas las ocurrencias anteriores de getShows() a api().getShows()
-// estamos usando deestructuring
-const { getShows, getBeers } = api();
-
-getBeers();
-// Para probar getShows, descomentar
-// getShows()
-//     .then(data => console.log(data))
-//     .catch(error => console.error(error));
+const { getBeers } = api();
 
 const templateShow = ({
-  id, name, image, summary, principal,
+  beerId, name, image, description, principal,
 }) => `
-    <div id="${id}" class="card ${principal ? 'principal' : 'secondary close'}">
+    <div id="${beerId}" class="card ${principal ? 'principal' : 'secondary close'}">
       <header class="card-header">
-        <h2><a href="./detail.html?id=${id}">${name}</a></h2>
+        <h2><a href="./detail.html?id=${beerId}">${name}</a></h2>
       </header>
       <div class="card-content">
         <div class="card-content-image">
-          <a href="./detail.html?id=${id}">
-            <img src="${image.medium}">
+          <a href="./detail.html?id=${beerId}">
+            <img src="${image}">
           </a>
         </div>
         <div class="card-content-text">
-          <p>${striptags(summary)}</p>
+          <p>${striptags(description)}</p>
           <div class="rating-container">
             <button class="icon">
               <i class="fas fa-star"></i>
@@ -42,18 +34,16 @@ const templateShow = ({
       </div>
     </div>`;
 
-const renderShows = (element, shows, start = 0, limit = 6) => {
-  // const htmlShows = shows.map(show => templateShow(show)).join('');
-  // lo ideal sería que la API tuviera limit, como no lo tiene, usamos slice()
+const renderShows = (element, shows, start = 0, limit = 10) => {
+  // TODO Paginate results
   const htmlShows = shows.slice(start, limit).map((show, index) => {
     if (index < 2) {
       return templateShow({ ...show, principal: true });
     }
     return templateShow({ ...show, principal: false });
-  }).join(''); // con join quitamos la coma, pues map devuelve un array
+  }).join('');
   element.innerHTML = htmlShows;
 
-  // para obtener los headers, los htmlShows deben ser renderizados previamente con innerHTML
   const headers = document.querySelectorAll('.card.secondary .card-header');
   headers.forEach((header) => {
     const id = header.parentElement.getAttribute('id');
@@ -63,13 +53,13 @@ const renderShows = (element, shows, start = 0, limit = 6) => {
 
 export const renderDOMShows = async (query) => {
   try {
-    const fetchShows = await getShows(query);
+    const fetchShows = await getBeers(query);
+    console.log(fetchShows);
     const showSection = document.getElementById('show-section');
-    // console.log(fetchShows);
     renderShows(showSection, fetchShows);
   } catch (e) {
     console.error(e);
   }
 };
 
-// renderDOMShows();
+renderDOMShows();
