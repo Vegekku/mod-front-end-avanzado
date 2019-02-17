@@ -30,6 +30,10 @@ You can search by:
 * Text. Look for any coincidence with search text.
 * Date. Look for any beer with the same `firstBrewed` value. Date compare just month and year.
 
+### Add comment
+
+Go to beer details and add your comments.
+
 ## CHANGELOG
 
 ### v1.0
@@ -41,3 +45,4 @@ Basic practice version. Include:
 ## TODO
 
 * Change input date by two inputs for months and years.
+* Change momentjs for dat-fns. It seems lighter.

@@ -7,9 +7,9 @@
 3. &#9745; En home, filtrar por texto y limitar a 10 max. Añadir filtro por fecha.
 4. &#9744; El buscador de texto debe estar en un header con imagen de fondo. (Imagen adaptada como en el curso!)
 5. &#9745; Navegar al detalle de la cerveza, la cual tiene más info que la mostrada en listado.
-6. &#9744; En detalle se debe cumplir ALMENOS uno de los siguientes puntos:
-    * guardar un comentario
-    * añadir likes
+6. &#9745; En detalle se debe cumplir ALMENOS uno de los siguientes puntos:
+    * &#9745; guardar un comentario
+    * &#9744; añadir likes
 
 ## Notas desarrollador
 

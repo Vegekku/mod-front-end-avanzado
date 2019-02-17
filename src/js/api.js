@@ -9,6 +9,17 @@ const api = (API_URL = 'https://web-bootcamp-exercise-beer-api-nijliozdcg.now.sh
     'X-API-KEY': `${API_KEY}`,
   };
 
+  const getBeer = async (id) => {
+    try {
+      const response = await fetch(`${GET_BEERS}/${id}`, { headers });
+      const data = await response.json();
+      const beer = { comment: [], ...data.beer };
+      return beer;
+    } catch (e) {
+      throw e;
+    }
+  };
+
   return {
     getBeers: async ({ search = false, date = false }) => {
       try {
@@ -34,28 +45,21 @@ const api = (API_URL = 'https://web-bootcamp-exercise-beer-api-nijliozdcg.now.sh
         throw e;
       }
     },
-    getBeer: async (id) => {
+    getBeer,
+    createComment: async (id, text) => {
       try {
-        const response = await fetch(`${GET_BEERS}/${id}`, { headers });
-        const data = await response.json();
-        return data.beer;
-      } catch (e) {
-        throw e;
-      }
-    },
-    createQuote: async (id, text) => {
-      try {
-        const response = await fetch(`${API_URL}/quote/${id}`, {
+        const response = await fetch(`${GET_BEERS}/${id}/comment`, {
           method: 'POST',
-          body: JSON.stringify({
-            quote: text,
-          }),
-          headers: {
-            'X-API-KEY': API_KEY,
-          },
+          headers,
+          body: JSON.stringify({ comment: text }),
         });
-        const quote = await response.json();
-        return quote;
+
+        if (response.status !== 202) {
+          throw response;
+        }
+
+        const beer = await getBeer(id);
+        return { success: true, comment: [beer.comment.pop()] };
       } catch (e) {
         throw e;
       }

@@ -1,9 +1,9 @@
 import './styles/detail.scss';
 import striptags from 'striptags';
 import api from './js/api';
-import defaultImage from './assets/cover.jpg';
+const Moment = require('moment');
 
-const { getBeer } = api();
+const { getBeer, createComment } = api();
 
 // TODO contributedBy must show tags?
 const detailTemplate = ({
@@ -19,7 +19,7 @@ const detailTemplate = ({
             <h1>${name}</h1>
         </div>
         <div class="image-container">
-            <img src="${image ? image : defaultImage}">
+            <img src="${image}">
         </div>
     </header>
     <div class="content">
@@ -39,17 +39,18 @@ const detailTemplate = ({
 };
 
 // TODO Formatt dateComment
-const commentTemplate = ({ comment }) => comment.map(item => `<p>${item.comment} <i>${item.dateComment}</i></p>`).join('');
+const commentTemplate = ({ comment }) => comment.map(item => `<div class="list-form"><p>${item.comment}</p><span>${Moment(item.dateComment).format('LLL')}</span></div>`).join('');
+
+const getParamId = () => {
+  const [, id] = window.location.search ? window.location.search.split('=') : [];
+  return id;
+};
 
 const renderDetail = async () => {
   try {
-    const [, id] = window.location.search ? window.location.search.split('=') : [];
-    const show = await getBeer(id);
-    const detailHTML = detailTemplate(show);
-    const commentsHTML = commentTemplate(show);
-    document.getElementById('detail').innerHTML = detailHTML;
-    console.log(commentsHTML);
-    document.getElementById('commentList').innerHTML = commentsHTML;
+    const show = await getBeer(getParamId());
+    document.getElementById('detail').innerHTML = detailTemplate(show);
+    document.getElementById('commentList').innerHTML = commentTemplate(show);
   } catch (e) {
     throw e;
   }
@@ -57,4 +58,17 @@ const renderDetail = async () => {
 
 renderDetail();
 
-console.log('DETAIL!!!!!!');
+const commentForm = document.getElementById('comment-form');
+
+commentForm.addEventListener('submit', async (evt) => {
+  try {
+    evt.preventDefault();
+    const commentImput = document.getElementById('comment');
+    commentImput.value = '';
+    const comment = await createComment(getParamId(), commentImput.value);
+    const commentList = document.getElementById('commentList');
+    commentList.innerHTML += commentTemplate(comment);
+  } catch (e) {
+    throw e;
+  }
+});
