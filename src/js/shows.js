@@ -35,7 +35,7 @@ const templateShow = ({
       </div>
     </div>`;
 
-const renderShows = (element, shows, start = 0, limit = 6) => {
+const renderShows = (element, shows, start = 0, limit = 10) => {
   // TODO Paginate results
   const htmlShows = shows.slice(start, limit).map((show, index) => {
     if (index < 2) {
