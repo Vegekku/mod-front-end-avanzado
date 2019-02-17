@@ -4,6 +4,7 @@ import api from './api';
 
 const { getBeers } = api();
 
+// TODO Addapt rating from API
 const templateShow = ({
   beerId, name, image, description, principal,
 }) => `
@@ -34,7 +35,7 @@ const templateShow = ({
       </div>
     </div>`;
 
-const renderShows = (element, shows, start = 0, limit = 10) => {
+const renderShows = (element, shows, start = 0, limit = 6) => {
   // TODO Paginate results
   const htmlShows = shows.slice(start, limit).map((show, index) => {
     if (index < 2) {

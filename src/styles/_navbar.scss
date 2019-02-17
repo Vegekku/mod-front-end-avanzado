@@ -16,18 +16,18 @@
     }
     a {
         font-size: $logo-font;
-        color: $primary-text-color;
+        color: $primary-color-light;
+        text-shadow: 0 0 $primary-font-size/2 $primary-color-text;
     }
-    fas {
+    .navbar-icon {
         font-size: $icons;
         cursor: pointer;
-        color: #FFF;
+        color: $primary-color-light;
+        text-shadow: 0 0 $primary-font-size/2 $primary-color-text;
     }
     .filter-container {
-        width: 85%;
-        @include tablet {
-            width: 40%;
-        }
+        width: 90%;
+        max-width: 480px;
     }
     .filter-input {
         display: flex;
@@ -59,6 +59,22 @@
         .navbar-logo,
         .fa-search {
             display: none;
+        }
+    }
+    /* Background */
+    picture {
+        position: absolute;
+        z-index: -1;
+        margin-left: -10px;
+        @include tablet {
+            margin-left: -20px;
+        }
+        img, source {
+            width: 100vw;
+            max-height: 70px;
+            @include tablet {
+                max-height: 90px;
+            }
         }
     }
 }
