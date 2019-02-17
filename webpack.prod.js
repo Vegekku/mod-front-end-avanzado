@@ -18,6 +18,17 @@ module.exports = WebpackMerge(common, {
           'sass-loader',
         ],
       },
+      {
+        test: /assets\/.*/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'assets/[name].[ext]',
+            },
+          },
+        ],
+      },
     ],
   },
   plugins: [

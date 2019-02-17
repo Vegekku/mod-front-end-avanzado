@@ -19,11 +19,6 @@ module.exports = {
         use: 'babel-loader',
         exclude: /node_modules/,
       },
-      {
-        // test: /\.(jpg|png|jpeg|gif)$/,
-        test: /assets\/.*/,
-        use: 'file-loader?name=[name].[ext]&useRelativePath=true',
-      },
     ],
   },
   plugins: [

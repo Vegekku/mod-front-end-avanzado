@@ -28,15 +28,15 @@ La API Key será enviada en el header de la petición para los puntos 2 y 6 de l
 
 ## Extras
 
-### ESLINT
+### &#9745; ESLINT
 
 Usar https://eslint.org/ para estandarizar y mantener mismo estilo de código. Recomendable AirBnB configuration.
 
-### Testing test unitarios
+### &#9744; Testing test unitarios
 
 Familiarizarse con tests con las herramientas Mocha, chai, Jest, Jasmine
 
-### Deploy con GitHub pages o now
+### &#9744; Deploy con GitHub pages o now
 
 * GitHub -> `git subtree push --prefix dist origin gh-pages`
 * Now.sh -> https://zeit.co/now

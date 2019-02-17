@@ -40,9 +40,17 @@ Go to beer details and add your comments.
 
 Basic practice version. Include:
 
-*
+* Accessible from any device.
+* List beers.
+* Filter by text and date, limit to 10.
+* Picture tag used like header background.
+* Beer detail page and save comment.
+
+[More info (spanish)](./docs/REQUIREMENTS.md)
 
 ## TODO
 
 * Change input date by two inputs for months and years.
 * Change momentjs for dat-fns. It seems lighter.
+* Paging beer list.
+* Resize image header.

@@ -100,7 +100,6 @@
       min-width: 85px;
       @include desktop {
         max-width: 200px;
-        min-width: 200px;
       }
     }
     .card-content-text {
@@ -178,6 +177,7 @@
         bottom: 0;
         max-width: unset;
         min-width: auto;
+        text-align: center;
         img {
           height: 100%;
           width: auto;

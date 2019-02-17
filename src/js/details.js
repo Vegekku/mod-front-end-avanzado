@@ -37,7 +37,6 @@ const detailTemplate = ({
 `;
 };
 
-// TODO Formatt dateComment
 const commentTemplate = ({ comment }) => comment.map(item => `<div class="list-form"><p>${item.comment}</p><span>${Moment(item.dateComment).format('LLL')}</span></div>`).join('');
 
 const getParamId = () => {
@@ -47,9 +46,11 @@ const getParamId = () => {
 
 const renderDetail = async () => {
   try {
+    document.getElementById('detailSection').classList.add('loading');
     const show = await getBeer(getParamId());
     document.getElementById('detail').innerHTML = detailTemplate(show);
     document.getElementById('commentList').innerHTML = commentTemplate(show);
+    document.getElementById('detailSection').classList.remove('loading');
   } catch (e) {
     throw e;
   }
